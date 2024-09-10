@@ -4,20 +4,17 @@ on:
     branches:
       - develop
 jobs:
-  release-pull-request:
-    permissions:
-      contents: read
-      pull-requests: write
+  gitPrRelease:
+    name: git-pr-release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.1
-      - run: gem install --no-document git-pr-release
-      - run: git-pr-release
-        env:
-          GIT_PR_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GIT_PR_RELEASE_BRANCH_PRODUCTION: main
-          GIT_PR_RELEASE_BRANCH_STAGING: develop
-          TZ: Asia/Tokyo
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 0
+    - name: git-pr-release
+      uses: bakunyo/git-pr-release-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GIT_PR_RELEASE_BRANCH_PRODUCTION: main
+        GIT_PR_RELEASE_BRANCH_STAGING: develop
+        TZ: Asia/Tokyo
