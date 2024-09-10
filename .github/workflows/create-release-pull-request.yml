@@ -12,6 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
       - run: gem install --no-document git-pr-release
       - run: git-pr-release
         env:
