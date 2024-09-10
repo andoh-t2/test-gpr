@@ -15,6 +15,7 @@ jobs:
           fetch-depth: 0
       - uses: ruby/setup-ruby@v1
         with:
+          ruby-version: 3.1
           bundler-cache: true
       - run: gem install --no-document git-pr-release
       - run: git-pr-release
