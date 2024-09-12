@@ -1,4 +1,15 @@
 Release <%= Time.now %>
-<% pull_requests.each do |pr| -%>
-<%=  pr.to_checklist_item %>
+<% labeled_prs = pull_requests.select { |pr| pr.labels.any? { |label| label.name == 'marker' } } %>
+<% unlabeled_prs = pull_requests.reject { |pr| pr.labels.any? { |label| label.name == 'marker' } } %>
+
+### PRs with `marker` label
+
+<% labeled_prs.each do |pr| -%>
+<%= pr.to_checklist_item %>
+<% end -%>
+
+### PRs without `marker` label
+
+<% unlabeled_prs.each do |pr| -%>
+<%= pr.to_checklist_item %>
 <% end -%>
