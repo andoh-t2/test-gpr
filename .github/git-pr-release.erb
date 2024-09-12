@@ -1,6 +1,6 @@
 Release <%= Time.now %>
-<% labeled_prs = prs.select { |pr| pr.labels.any? { |label| label.name == 'marker' } } %>
-<% unlabeled_prs = prs.reject { |pr| pr.labels.any? { |label| label.name == 'marker' } } %>
+<% labeled_prs = pull_requests.select { |pr| pr.labels.include?('marker') } %>
+<% unlabeled_prs = pull_requests.reject { |pr| pr.labels.include?('marker') } %>
 
 ### PRs with `marker` label
 
