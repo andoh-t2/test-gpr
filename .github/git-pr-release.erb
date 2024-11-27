@@ -1,6 +1,4 @@
-<% notice = 'PLEASE MERGE WITHOUT SQUASH' %>
-
-<% '(' + notice + ')' if (defined? notice) %> Perception Release <%= Time.now %>
+[PLEASE MERGE WITHOUT SQUASH] Perception Release <%= Time.now %>
 <% labeled_prs = pull_requests.select { |pr| pr.labels.any? { |label| label.name == 'no-AD-impact' } } %>
 <% unlabeled_prs = pull_requests.reject { |pr| pr.labels.any? { |label| label.name == 'no-AD-impact' } } %>
 
