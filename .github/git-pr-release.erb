@@ -2,7 +2,13 @@ Release <%= Time.now %>
 <% labeled_prs = pull_requests.select { |pr| pr.labels.any? { |label| label.name == 'marker' } } %>
 <% unlabeled_prs = pull_requests.reject { |pr| pr.labels.any? { |label| label.name == 'marker' } } %>
 
+<<<<<<< Updated upstream
 ### PRs with `marker` label
+=======
+<%= '(' + notice + ')' if (defined? notice) %> Perception Release <%= Time.now %>
+<% labeled_prs = pull_requests.select { |pr| pr.labels.any? { |label| label.name == 'no-AD-impact' } } %>
+<% unlabeled_prs = pull_requests.reject { |pr| pr.labels.any? { |label| label.name == 'no-AD-impact' } } %>
+>>>>>>> Stashed changes
 
 <% labeled_prs.each do |pr| -%>
 <%= pr.to_checklist_item %>
