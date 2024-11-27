@@ -1,4 +1,4 @@
-[PLEASE MERGE WITHOUT SQUASH] Perception Release <%= Time.now %>
+[𝐏𝐋𝐄𝐀𝐒𝐄 𝐌𝐄𝐑𝐆𝐄 𝐖𝐈𝐓𝐇𝐎𝐔𝐓 𝐒𝐐𝐔𝐀𝐒𝐇] Perception Release <%= Time.now %>
 <% labeled_prs = pull_requests.select { |pr| pr.labels.any? { |label| label.name == 'no-AD-impact' } } %>
 <% unlabeled_prs = pull_requests.reject { |pr| pr.labels.any? { |label| label.name == 'no-AD-impact' } } %>
 
