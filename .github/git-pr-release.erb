@@ -1,15 +1,21 @@
-Release <%= Time.now %>
-<% labeled_prs = pull_requests.select { |pr| pr.labels.any? { |label| label.name == 'marker' } } %>
-<% unlabeled_prs = pull_requests.reject { |pr| pr.labels.any? { |label| label.name == 'marker' } } %>
+<% notice = 'PLEASE MERGE WITHOUT SQUASH' %>
 
-### PRs with `marker` label
+<% '(' + notice + ')' if (defined? notice) %> Perception Release <%= Time.now %>
+<% labeled_prs = pull_requests.select { |pr| pr.labels.any? { |label| label.name == 'no-AD-impact' } } %>
+<% unlabeled_prs = pull_requests.reject { |pr| pr.labels.any? { |label| label.name == 'no-AD-impact' } } %>
 
-<% labeled_prs.each do |pr| -%>
+The person in charge should put ✅ if there are no problems with the merge to [develop/1_1](https://github.com/t2-auto/apollo/tree/develop/1_1).
+
+More details: https://docs.google.com/document/d/1YBq5_Ra-X8JRDyHizVDtPG-y_H1Q5QsEuZ5RBXrAlRE/edit?usp=sharing
+
+### 🚚 Impacts on AD
+
+<% unlabeled_prs.each do |pr| -%>
 <%= pr.to_checklist_item %>
 <% end -%>
 
-### PRs without `marker` label
+### 🌱 No Impacts on AD
 
-<% unlabeled_prs.each do |pr| -%>
+<% labeled_prs.each do |pr| -%>
 <%= pr.to_checklist_item %>
 <% end -%>
